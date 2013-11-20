@@ -24,7 +24,36 @@ public class program7 {
         System.out.println(tree);
         tree.insert(players[3]);
         System.out.println(tree);
+        System.out.println(tree.search(player1));
+        System.out.println();
+        System.out.println(tree.search(players[3]));
+    }
 
+    public static void printMenu() {
+        System.out.println();
+        System.out.println("1  -  Create an empty table");
+        System.out.println("2  -  Insert an item into the table");
+        System.out.println("3  -  Delete an item from the table");
+        System.out.println("4  -  Search for an item in the table");
+        System.out.println("5  -  Return the height of the tree");
+        System.out.println("6  -  Return the number of nodes in the tree");
+        System.out.println("7  -  Return average level of nodes in the tree");
+        System.out.println("8  -  Print tree (tree-like shape)");
+        System.out.println("9  -  Print tree (in-order)");
+        System.out.println();
+    }
+
+    public static int getMenuChoice() {
+        printMenu();
+        System.out.print("Enter menu option: ");
+        int choice = console.nextInt();
+        while (choice == 3 || choice > 4) {
+            System.out.println();
+            System.out.println("You did not choose a valid operation!");
+            System.out.print("Please reenter a valid operation: ");
+            choice = console.nextInt();
+        }
+        return choice;
     }
 }
 
@@ -79,6 +108,25 @@ class Table {
                 insert(myRoot.right, item);
             } else {
                 myRoot.right = new Node(item);
+            }
+        }
+    }
+
+    public KeyComparable search(KeyComparable key) {
+        return search(_root, key);
+    }
+
+    private KeyComparable search(Node myRoot, KeyComparable key) {
+        if (myRoot == null) {
+            return null;
+        } else {
+            int comp = key.keyCompareTo(myRoot.data);
+            if (comp == 0) {
+                return myRoot.data;
+            } else if (comp < 0) {
+                return search(myRoot.left, key);
+            } else {
+                return search(myRoot.right, key);
             }
         }
     }
