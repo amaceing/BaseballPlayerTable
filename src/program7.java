@@ -9,26 +9,26 @@ public class program7 {
 
     public static void main(String[] args) {
         Table tree = new Table();
-        MLBPlayer player1 = new MLBPlayer(2, "Diamondbacks", "Jose", .300);
-        MLBPlayer player2 = new MLBPlayer(1, "Diamondbacks", "Jose", .300);
-        MLBPlayer player3 = new MLBPlayer(2, "Diamondbacks", "Jose", .300);
-        MLBPlayer player4 = new MLBPlayer(3, "Cardinals", "Jose", .300);
-        KeyComparable[] players = new KeyComparable[4];
-        players[0] = player1;
-        players[1] = player2;
-        players[2] = player3;
-        players[3] = player4;
-        tree.insert(player1);
-        tree.insert(player3);
-        tree.insert(player2);
-        System.out.println(tree);
-        tree.insert(players[3]);
-        System.out.println(tree);
-        System.out.println(tree.search(player1));
-        System.out.println();
-        System.out.println(tree.search(players[3]));
+        printIntro();
+        char cont = '0';
+        do {
+            int menuChoice = getMenuChoice();
+            if (menuChoice == 1) {
+                System.out.println("An empty table will replace the current");
+                System.out.println("table.");
+                tree = new Table();
+            }
+            performOperation(menuChoice, tree);
+            cont = continueProg();
+        } while(cont == 'Y' || cont == 'y');
+        System.out.println("You have quit the program");
+
     }
 
+    public static void printIntro() {
+        System.out.println("This program allows the user to");
+        System.out.println("create, fill, and manipulate a table!");
+    }
     public static void printMenu() {
         System.out.println();
         System.out.println("1  -  Create an empty table");
@@ -47,13 +47,57 @@ public class program7 {
         printMenu();
         System.out.print("Enter menu option: ");
         int choice = console.nextInt();
-        while (choice == 3 || choice > 4) {
+        while (choice < 1 || choice > 9) {
             System.out.println();
             System.out.println("You did not choose a valid operation!");
             System.out.print("Please reenter a valid operation: ");
             choice = console.nextInt();
         }
+        System.out.println();
         return choice;
+    }
+
+    public static char continueProg() {
+        char cont = '0';
+        System.out.print("Enter Y to continue, N to quit: ");
+        cont = console.next().charAt(0);
+        return cont;
+    }
+
+    //Decides which operation to perform based on listOperations() value
+    public static void performOperation(int opChoice, Table tree) {
+        switch (opChoice) {
+            case 2:
+                System.out.println("Insert");
+                break;
+            case 3:
+                System.out.println("Delete");
+                break;
+            case 4:
+                System.out.println("Search");
+                break;
+            case 5:
+                System.out.println("getHeight");
+                break;
+            case 6:
+                System.out.println("GetAverageLevel");
+                break;
+            case 7:
+                System.out.println("getSize");
+                break;
+            case 8:
+                System.out.println("showTree");
+                break;
+            case 9:
+                System.out.println("toString");
+                break;
+        }
+        System.out.println();
+    }
+
+    public static void insertMLB(Table tree) {
+        int jerseyNum = 0;
+        int
     }
 }
 
