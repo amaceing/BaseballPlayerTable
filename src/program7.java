@@ -68,7 +68,7 @@ public class program7 {
     public static void performOperation(int opChoice, Table tree) {
         switch (opChoice) {
             case 2:
-                System.out.println("Insert");
+                insertPlayer(tree);
                 break;
             case 3:
                 System.out.println("Delete");
@@ -89,15 +89,37 @@ public class program7 {
                 System.out.println("showTree");
                 break;
             case 9:
-                System.out.println("toString");
+                System.out.println(tree);
                 break;
         }
         System.out.println();
     }
 
-    public static void insertMLB(Table tree) {
+    public static void insertPlayer(Table tree) {
+        MLBPlayer player = createPlayer();
+        tree.insert(player);
+    }
+
+    public static MLBPlayer createPlayer() {
         int jerseyNum = 0;
-        int
+        String team = "";
+        String playerName = "";
+        double battingAverage = 0.0;
+        MLBPlayer player = null;
+        System.out.print("Enter the player jersey number: ");
+        jerseyNum = console.nextInt();
+        System.out.println();
+        System.out.print("Enter the team name: ");
+        team = console.next();
+        System.out.println();
+        System.out.print("Enter the player name: ");
+        playerName = console.next();
+        System.out.println();
+        System.out.print("Enter the batting average: ");
+        battingAverage = console.nextDouble();
+        System.out.println();
+        player = new MLBPlayer(jerseyNum, team, playerName, battingAverage);
+        return player;
     }
 }
 
