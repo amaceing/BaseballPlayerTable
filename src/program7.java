@@ -74,7 +74,7 @@ public class program7 {
                 System.out.println("Delete");
                 break;
             case 4:
-                System.out.println("Search");
+                searchTable(tree);
                 break;
             case 5:
                 System.out.println("getHeight");
@@ -100,6 +100,16 @@ public class program7 {
         tree.insert(player);
     }
 
+    public static void searchTable(Table tree) {
+        MLBPlayerKey playerKey = createPlayerKey();
+        KeyComparable player = tree.search(playerKey);
+        if (player != null) {
+            System.out.println(player);
+        } else {
+            System.out.println("Player not found.");
+        }
+    }
+
     public static MLBPlayer createPlayer() {
         int jerseyNum = 0;
         String team = "";
@@ -120,6 +130,20 @@ public class program7 {
         System.out.println();
         player = new MLBPlayer(jerseyNum, team, playerName, battingAverage);
         return player;
+    }
+
+    public static MLBPlayerKey createPlayerKey() {
+        int jerseyNum = 0;
+        String team = "";
+        MLBPlayerKey playerKey = null;
+        System.out.print("Enter the player jersey number: ");
+        jerseyNum = console.nextInt();
+        System.out.println();
+        System.out.print("Enter the team name: ");
+        team = console.next();
+        System.out.println();
+        playerKey = new MLBPlayerKey(jerseyNum, team);
+        return playerKey;
     }
 }
 
