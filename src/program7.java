@@ -8,6 +8,7 @@ public class program7 {
     public static final Scanner console = new Scanner(System.in);
 
     public static void main(String[] args) {
+        Table tree = new Table();
         MLBPlayer player1 = new MLBPlayer(2, "Diamondbacks", "Jose", .300);
         MLBPlayer player2 = new MLBPlayer(1, "Diamondbacks", "Jose", .300);
         MLBPlayer player3 = new MLBPlayer(2, "Diamondbacks", "Jose", .300);
@@ -17,12 +18,12 @@ public class program7 {
         players[1] = player2;
         players[2] = player3;
         players[3] = player4;
-        System.out.println(player1.keyCompareTo(player2));
-        System.out.println(player1.keyCompareTo(player3));
-        System.out.println(player1.keyCompareTo(player4));
-        for (int i = 0; i < players.length; i++) {
-            System.out.println(players[i].toStringKey());
-        }
+        tree.insert(player1);
+        tree.insert(player3);
+        tree.insert(player2);
+        System.out.println(tree);
+        tree.insert(players[3]);
+        System.out.println(tree);
 
     }
 }
@@ -32,6 +33,65 @@ interface KeyComparable {
     int keyCompareTo(KeyComparable other);
 
     String toStringKey();
+}
+
+class Node {
+    public KeyComparable data;
+    public Node left;
+    public Node right;
+
+    public Node(KeyComparable item) {
+        data = item;
+        left = null;
+        right = null;
+    }
+}
+
+class Table {
+    private Node _root;
+
+    public Table() {
+        _root = null;
+    }
+
+    public String toString() {
+        return preOrderPrint(_root);
+    }
+
+    public void insert(KeyComparable item) {
+        if (_root != null) {
+            insert(_root, item);
+        } else {
+            _root = new Node(item);
+        }
+    }
+
+    private void insert(Node myRoot, KeyComparable item) {
+        int comp = item.keyCompareTo(myRoot.data);
+        if (comp < 0) {
+            if (myRoot.left != null) {
+                insert(myRoot.left, item);
+            } else {
+                myRoot.left = new Node(item);
+            }
+        } else if (comp > 0) {
+            if (myRoot.right != null) {
+                insert(myRoot.right, item);
+            } else {
+                myRoot.right = new Node(item);
+            }
+        }
+    }
+
+    private String preOrderPrint(Node myRoot) {
+        String result = "";
+        if (myRoot != null) {
+            result += preOrderPrint(myRoot.left);
+            result += myRoot.data + "\n";
+            result += preOrderPrint(myRoot.right);
+        }
+        return result;
+    }
 }
 
 class MLBPlayer extends MLBPlayerKey {
@@ -50,6 +110,12 @@ class MLBPlayer extends MLBPlayerKey {
 
     public double getBattingAverage() {
         return _battingAverage;
+    }
+
+    public String toString() {
+        return super.toString() + "\n" +
+               "Player Name: " + _playerName + "\n" +
+               "Batting Average: " + _battingAverage;
     }
 }
 
@@ -96,7 +162,11 @@ class MLBPlayerKey implements KeyComparable {
     }
 
     public String toStringKey() {
-        return "Jersey #" + _jerseyNumber + "\n" +
-               "Team: " + _teamName.substring(0, 3) + "\n";
+        return "#" + _jerseyNumber + ", " + _teamName.substring(0, 3);
+    }
+
+    public String toString() {
+        return "Jersey #: " + _jerseyNumber + "\n" +
+               "Team: " + _teamName;
     }
 }
