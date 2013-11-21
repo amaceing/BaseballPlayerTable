@@ -86,7 +86,7 @@ public class program7 {
                 System.out.println("getSize");
                 break;
             case 8:
-                System.out.println("showTree");
+                System.out.println(tree.showTree());
                 break;
             case 9:
                 System.out.println(tree);
@@ -230,6 +230,25 @@ class Table {
         }
         return result;
     }
+
+    public String showTree() {
+        return showTree(_root, 0);
+    }
+
+    private String showTree(Node myRoot, int level) {
+        String result = "";
+        if (myRoot != null) {
+            result += showTree(myRoot.right, level + 1);
+            for (int i = 0; i < level; i++) {
+                result += "\t\t";
+            }
+            result += myRoot.data.toStringKey();
+            result += showTree(myRoot.left, level + 1);
+        } else {
+            result += "";
+        }
+        return result;
+    }
 }
 
 class MLBPlayer extends MLBPlayerKey {
@@ -300,7 +319,7 @@ class MLBPlayerKey implements KeyComparable {
     }
 
     public String toStringKey() {
-        return "#" + _jerseyNumber + ", " + _teamName.substring(0, 3);
+        return "#" + _jerseyNumber + ", " + _teamName.substring(0, 3) + "\n";
     }
 
     public String toString() {
