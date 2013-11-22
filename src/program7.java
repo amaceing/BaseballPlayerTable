@@ -71,7 +71,7 @@ public class program7 {
                 insertPlayer(tree);
                 break;
             case 3:
-                System.out.println("Delete");
+                deletePlayer(tree);
                 break;
             case 4:
                 searchTable(tree);
@@ -100,7 +100,15 @@ public class program7 {
         tree.insert(player);
     }
 
+    public static void deletePlayer(Table tree) {
+        System.out.println("Enter the key of the player you wish to delete!");
+        KeyComparable playerKey = createPlayerKey();
+        tree.delete(playerKey);
+        System.out.println("Player deleted!");
+    }
+
     public static void searchTable(Table tree) {
+        System.out.println("Enter the key of the player you wish to search for!");
         MLBPlayerKey playerKey = createPlayerKey();
         KeyComparable player = tree.search(playerKey);
         if (player != null) {
@@ -127,7 +135,6 @@ public class program7 {
         System.out.println();
         System.out.print("Enter the batting average: ");
         battingAverage = console.nextDouble();
-        System.out.println();
         player = new MLBPlayer(jerseyNum, team, playerName, battingAverage);
         return player;
     }
@@ -141,7 +148,6 @@ public class program7 {
         System.out.println();
         System.out.print("Enter the team name: ");
         team = console.next();
-        System.out.println();
         playerKey = new MLBPlayerKey(jerseyNum, team);
         return playerKey;
     }
@@ -199,6 +205,42 @@ class Table {
             } else {
                 myRoot.right = new Node(item);
             }
+        }
+    }
+
+    public void delete(KeyComparable key) {
+        _root = delete(_root, key);
+    }
+
+    private Node delete(Node myRoot, KeyComparable key) {
+        if (myRoot != null) {
+            int comp = key.keyCompareTo(myRoot.data);
+            if (comp < 0) {
+                myRoot.left = delete(myRoot.left, key);
+            } else if (comp > 0) {
+                myRoot.right = delete(myRoot.right, key);
+            } else {
+                if (myRoot.left == null && myRoot.right == null) {
+                    myRoot = myRoot.right;
+                } else if (myRoot.left == null) {
+                    myRoot = myRoot.left;
+                } else if (myRoot.right == null) {
+                    myRoot = myRoot.left;
+                } else {
+                    KeyComparable rep = findMax(myRoot.left);
+                    myRoot.data = rep;
+                    myRoot.left = delete(myRoot.left, rep);
+                }
+            }
+        }
+        return myRoot;
+    }
+
+    private KeyComparable findMax(Node myRoot) {
+        if (myRoot.right == null) {
+            return myRoot.data;
+        } else {
+            return findMax(myRoot.right);
         }
     }
 
@@ -272,7 +314,7 @@ class MLBPlayer extends MLBPlayerKey {
     public String toString() {
         return super.toString() + "\n" +
                "Player Name: " + _playerName + "\n" +
-               "Batting Average: " + _battingAverage;
+               "Batting Average: " + _battingAverage + "\n";
     }
 }
 
@@ -324,6 +366,6 @@ class MLBPlayerKey implements KeyComparable {
 
     public String toString() {
         return "Jersey #: " + _jerseyNumber + "\n" +
-               "Team: " + _teamName;
+               "Team: " + _teamName + "\n";
     }
 }
