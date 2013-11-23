@@ -80,10 +80,10 @@ public class program7 {
                 System.out.println("getHeight");
                 break;
             case 6:
-                System.out.println("GetAverageLevel");
+                System.out.println("Number of nodes: " + tree.getSize());
                 break;
             case 7:
-                System.out.println("getSize");
+                System.out.println("getAverageLevel");
                 break;
             case 8:
                 System.out.println(tree.showTree());
@@ -261,6 +261,20 @@ class Table {
                 return search(myRoot.right, key);
             }
         }
+    }
+
+    public int getSize() {
+        return getSize(_root);
+    }
+
+    private int getSize(Node myRoot) {
+        int nodeCount = 0;
+        if (myRoot != null) {
+            nodeCount++;
+            nodeCount += getSize(myRoot.left);
+            nodeCount += getSize(myRoot.right);
+        }
+        return nodeCount;
     }
 
     private String preOrderPrint(Node myRoot) {
