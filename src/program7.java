@@ -8,19 +8,27 @@ public class program7 {
     public static final Scanner console = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Table tree = new Table();
         printIntro();
-        char cont = '0';
+        char mainCont = '0';
+        char oneTableCont = '0';
         do {
-            int menuChoice = getMenuChoice();
-            if (menuChoice == 1) {
-                System.out.println("An empty table will replace the current");
-                System.out.println("table.");
-                tree = new Table();
+            int mainMenuChoice = getMainMenuChoice();
+            if (mainMenuChoice == 1) {
+                Table tree = new Table();
+                do {
+                    int menuChoice = getMenuChoice();
+                    if (menuChoice == 1) {
+                        System.out.println("An empty table will replace the current");
+                        System.out.println("table.");
+                        tree = new Table();
+                    }
+                    performOperation(menuChoice, tree);
+                    oneTableCont = continueOneTable();
+                } while(oneTableCont == 'y' || oneTableCont == 'Y');
             }
-            performOperation(menuChoice, tree);
-            cont = continueProg();
-        } while(cont == 'Y' || cont == 'y');
+            System.out.println();
+            mainCont = continueProg();
+        } while(mainCont == 'Y' || mainCont == 'y');
         System.out.println("You have quit the program");
 
     }
@@ -29,6 +37,15 @@ public class program7 {
         System.out.println("This program allows the user to");
         System.out.println("create, fill, and manipulate a table!");
     }
+
+    public static void printMainMenu() {
+        System.out.println();
+        System.out.println("1  -  Test one table");
+        System.out.println("2  -  Read data file to create table");
+        System.out.println("3  -  Create random tables");
+        System.out.println();
+    }
+
     public static void printMenu() {
         System.out.println();
         System.out.println("1  -  Create an empty table");
@@ -41,6 +58,20 @@ public class program7 {
         System.out.println("8  -  Print tree (tree-like shape)");
         System.out.println("9  -  Print tree (in-order)");
         System.out.println();
+    }
+
+    public static int getMainMenuChoice() {
+        printMainMenu();
+        System.out.print("Enter menu option: ");
+        int choice = console.nextInt();
+        while (choice < 1 || choice > 3) {
+            System.out.println();
+            System.out.println("You did not choose a valid operation!");
+            System.out.print("Please reenter a valid operation: ");
+            choice = console.nextInt();
+        }
+        System.out.println();
+        return choice;
     }
 
     public static int getMenuChoice() {
@@ -57,9 +88,15 @@ public class program7 {
         return choice;
     }
 
+    public static char continueOneTable() {
+        char cont = '0';
+        System.out.print("Enter Y to continue with one table, N to quit: ");
+        cont = console.next().charAt(0);
+        return cont;
+    }
     public static char continueProg() {
         char cont = '0';
-        System.out.print("Enter Y to continue, N to quit: ");
+        System.out.print("Enter Y to continue program, N to quit: ");
         cont = console.next().charAt(0);
         return cont;
     }
@@ -326,7 +363,7 @@ class MLBPlayer extends MLBPlayerKey {
     }
 
     public String toString() {
-        return super.toString() + "\n" +
+        return super.toString() +
                "Player Name: " + _playerName + "\n" +
                "Batting Average: " + _battingAverage + "\n";
     }
