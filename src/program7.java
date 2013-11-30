@@ -17,6 +17,17 @@ public class program7 {
             if (mainMenuChoice == 1) {
                 Table tree = new Table();
                 do {
+                    tree.insert(new MLBPlayer(98, "Falcons", "HarveyDent", 0.654));
+                    tree.insert(new MLBPlayer(26, "Diamonbacks", "MigeulMontero", 0.294));
+                    tree.insert(new MLBPlayer(10, "Diamondbacks", "JustinUpton", 0.167));
+                    tree.insert(new MLBPlayer(24, "Diamondbacks", "ChrisYoung", 0.333));
+                    tree.insert(new MLBPlayer(22, "Pirates", "AndrewMcCuthcheon", 0.316));
+                    tree.insert(new MLBPlayer(3, "Braves", "AnthonyMace", 0.345));
+                    tree.insert(new MLBPlayer(14, "Pirates", "PrinceDarko", 0.234));
+                    tree.insert(new MLBPlayer(26, "Twins", "EmilyRobinson", 0.345));
+                    tree.insert(new MLBPlayer(24, "Yankees", "JackyRobinson", 0.345));
+                    tree.insert(new MLBPlayer(32, "Cubs", "GarettWinkler", 0.764));
+                    tree.insert(new MLBPlayer(2, "Hawks", "BruceWayne", 0.234));
                     int menuChoice = getMenuChoice();
                     if (menuChoice == 1) {
                         System.out.println("An empty table will replace the current");
@@ -125,7 +136,7 @@ public class program7 {
                 System.out.println("Number of nodes: " + tree.getSize());
                 break;
             case 7:
-                System.out.println("getAverageLevel");
+                System.out.println("Average level: " + tree.getAverageLevel());
                 break;
             case 8:
                 System.out.println(tree.showTree());
@@ -354,6 +365,28 @@ class Table {
             nodeCount += getSize(myRoot.right);
         }
         return nodeCount;
+    }
+
+    public double getAverageLevel() {
+        if (_root == null) {
+            return 0;
+        } else {
+            return (double) getAverageLevel(_root, 1) / getSize();
+        }
+    }
+
+    private int getAverageLevel(Node myRoot, int level) {
+        int levels = 0;
+        if (myRoot != null) {
+            levels += getAverageLevel(myRoot.left, level + 1);
+            for (int i = 0; i < level; i++) {
+                levels++;
+            }
+            levels += getAverageLevel(myRoot.right, level + 1);
+        } else {
+            levels += 0;
+        }
+        return levels;
     }
 
     public String toString() {
