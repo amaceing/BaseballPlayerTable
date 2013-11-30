@@ -250,10 +250,6 @@ class Table {
         _root = null;
     }
 
-    public String toString() {
-        return preOrderPrint(_root);
-    }
-
     public void insert(KeyComparable item) {
         if (_root != null) {
             insert(_root, item);
@@ -358,6 +354,10 @@ class Table {
             nodeCount += getSize(myRoot.right);
         }
         return nodeCount;
+    }
+
+    public String toString() {
+        return preOrderPrint(_root);
     }
 
     private String preOrderPrint(Node myRoot) {

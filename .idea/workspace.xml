@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="931d8ef9-9ddb-4cb9-927d-5cd490cf7798" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MLBPlayers.txt" afterPath="$PROJECT_DIR$/MLBPlayers.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/program7.java" afterPath="$PROJECT_DIR$/src/program7.java" />
     </list>
     <ignored path="Prog7.iws" />
@@ -80,7 +79,7 @@
       <file leaf-file-name="program7.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/program7.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="131" column="47" selection-start="4739" selection-end="4739" vertical-scroll-proportion="-5.1320753">
+            <state line="357" column="19" selection-start="11339" selection-end="11339" vertical-scroll-proportion="0.22484277">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -559,7 +558,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/program7.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="47" selection-start="4739" selection-end="4739" vertical-scroll-proportion="-5.1320753">
+        <state line="357" column="19" selection-start="11339" selection-end="11339" vertical-scroll-proportion="0.22484277">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
