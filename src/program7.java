@@ -119,7 +119,7 @@ public class program7 {
                 searchTable(tree);
                 break;
             case 5:
-                System.out.println("getHeight");
+                System.out.println("Height of tree: " + tree.getHeight());
                 break;
             case 6:
                 System.out.println("Number of nodes: " + tree.getSize());
@@ -203,9 +203,9 @@ public class program7 {
                 int jerseyNum = fromFile.nextInt();
                 String team = fromFile.next();
                 String player = fromFile.next();
-                double batavg = fromFile.nextDouble();
+                double batAvg = fromFile.nextDouble();
                 MLBPlayer playerFromFile = new MLBPlayer(jerseyNum, team,
-                                                         player, batavg);
+                                                         player, batAvg);
                 fileTree.insert(playerFromFile);
             } while (fromFile.hasNext());
             System.out.println(fileTree);
@@ -331,6 +331,18 @@ class Table {
             } else {
                 return search(myRoot.right, key);
             }
+        }
+    }
+
+    public int getHeight() {
+        return getHeight(_root);
+    }
+
+    private int getHeight(Node myRoot) {
+        if (myRoot == null) {
+            return 0;
+        } else {
+            return 1 + Math.max(getHeight(myRoot.left), getHeight(myRoot.right));
         }
     }
 

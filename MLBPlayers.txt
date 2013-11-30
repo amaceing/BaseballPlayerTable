@@ -18,4 +18,3 @@
 25 Redsox BrianHudnall 0.652
 62 Yankees BobSimms 0.253
 17 Twins JamesKim 0.653
-

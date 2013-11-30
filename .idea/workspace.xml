@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="931d8ef9-9ddb-4cb9-927d-5cd490cf7798" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MLBPlayers.txt" afterPath="$PROJECT_DIR$/MLBPlayers.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/program7.java" afterPath="$PROJECT_DIR$/src/program7.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Prog7.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="931d8ef9-9ddb-4cb9-927d-5cd490cf7798" time="1385769748158" ignored="false" />
-    <file path="/program7.java" changelist="931d8ef9-9ddb-4cb9-927d-5cd490cf7798" time="1385770216883" ignored="false" />
+    <file path="/program7.java" changelist="931d8ef9-9ddb-4cb9-927d-5cd490cf7798" time="1385771062090" ignored="false" />
     <file path="$PROJECT_DIR$/../Prog6/src/program6.java" changelist="931d8ef9-9ddb-4cb9-927d-5cd490cf7798" time="1385078244104" ignored="false" />
     <file path="/program6.java" changelist="931d8ef9-9ddb-4cb9-927d-5cd490cf7798" time="1385078163475" ignored="false" />
     <file path="$PROJECT_DIR$/../Prog4/src/program4.java" changelist="931d8ef9-9ddb-4cb9-927d-5cd490cf7798" time="1385078370765" ignored="false" />
@@ -80,10 +80,19 @@
       <file leaf-file-name="program7.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/program7.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="23" selection-start="1027" selection-end="1027" vertical-scroll-proportion="-3.0109718">
+            <state line="131" column="47" selection-start="4739" selection-end="4739" vertical-scroll-proportion="-5.1320753">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MLBPlayers.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MLBPlayers.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="21" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -106,6 +115,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/MLBPlayers.txt" />
         <option value="$PROJECT_DIR$/src/program7.java" />
       </list>
     </option>
@@ -352,7 +362,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5952381" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -367,8 +377,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24813233" sideWeight="0.73942095" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24919957" sideWeight="0.73942095" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26057908" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24919957" sideWeight="0.73719376" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26280624" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -542,14 +552,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MLBPlayers.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="19" column="21" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/program7.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="23" selection-start="1027" selection-end="1027" vertical-scroll-proportion="-3.0109718">
+        <state line="131" column="47" selection-start="4739" selection-end="4739" vertical-scroll-proportion="-5.1320753">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
