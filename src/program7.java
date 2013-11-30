@@ -2,6 +2,7 @@
 //This program ...
 
 import java.util.*;
+import java.io.*;
 
 public class program7 {
 
@@ -25,6 +26,10 @@ public class program7 {
                     performOperation(menuChoice, tree);
                     oneTableCont = continueOneTable();
                 } while(oneTableCont == 'y' || oneTableCont == 'Y');
+            } else if (mainMenuChoice == 2) {
+                readFromFile();
+            } else if (mainMenuChoice == 3){
+                System.out.println("Generate random tables");
             }
             System.out.println();
             mainCont = continueProg();
@@ -187,6 +192,35 @@ public class program7 {
         team = console.next();
         playerKey = new MLBPlayerKey(jerseyNum, team);
         return playerKey;
+    }
+
+    public static void readFromFile() {
+        Table fileTree = new Table();
+        String fileName = getFileName();
+        try {
+            Scanner fromFile = new Scanner(new File(fileName));
+            do {
+                int jerseyNum = fromFile.nextInt();
+                String team = fromFile.next();
+                String player = fromFile.next();
+                double batavg = fromFile.nextDouble();
+                MLBPlayer playerFromFile = new MLBPlayer(jerseyNum, team,
+                                                         player, batavg);
+                fileTree.insert(playerFromFile);
+            } while (fromFile.hasNext());
+            System.out.println(fileTree);
+        } catch (IOException e) {
+            System.out.println("File access error!");
+            System.out.println();
+        }
+    }
+
+    public static String getFileName() {
+        System.out.println();
+        System.out.println("Name of file to read from: ");
+        String file = console.next();
+        System.out.println();
+        return file;
     }
 }
 
