@@ -40,7 +40,7 @@ public class program7 {
             } else if (mainMenuChoice == 2) {
                 readFromFile();
             } else if (mainMenuChoice == 3){
-                System.out.println("Generate random tables");
+                testRandomTables();
             }
             System.out.println();
             mainCont = continueProg();
@@ -232,6 +232,37 @@ public class program7 {
         String file = console.next();
         System.out.println();
         return file;
+    }
+
+    public static void testRandomTables() {
+        int nextInt = 0;
+        double maxAverage = 0;
+        double maxHeight = 0;
+        double averageLevel = 0.0;
+        double averageHeight = 0.0;
+        Table temp = null;
+        System.out.println("  Size\t\tWorst Case\t\tExpected Case");
+        for(int i = 4; i < 16; i++) {
+            for(int j = 0; j < 10; j++) {
+                temp = new Table();
+                while (temp.getSize() < Math.pow(2, i)) {
+                    Random generator = new Random();
+                    nextInt = generator.nextInt();
+                    KeyComparableNumber newNum = new KeyComparableNumber(nextInt);
+                    temp.insert(newNum);
+                }
+                averageLevel += temp.getAverageLevel();
+                if(averageLevel > maxAverage){
+                    maxAverage = averageLevel / 10;
+                }
+                averageHeight += temp.getHeight();
+                if(averageHeight > maxHeight){
+                    maxHeight = averageHeight / 10;
+                }
+            }
+            int size = temp.getSize();
+            System.out.printf("%6d" + "%16.2f" + "%19.2f\n", size, maxHeight, maxAverage);
+        }
     }
 }
 
@@ -497,5 +528,37 @@ class MLBPlayerKey implements KeyComparable {
     public String toString() {
         return "Jersey #: " + _jerseyNumber + "\n" +
                "Team: " + _teamName + "\n";
+    }
+}
+
+class KeyComparableNumber implements KeyComparable {
+    private int _key;
+
+    public KeyComparableNumber(int key) {
+        _key = key;
+    }
+
+    public int getKey() {
+        return _key;
+    }
+
+    public int keyCompareTo(KeyComparable other) {
+        int comp = 2;
+        if (other instanceof KeyComparableNumber) {
+            KeyComparableNumber otherNum = (KeyComparableNumber) other;
+            comp = _key - otherNum._key;
+            if (comp < 0) {
+                comp = -1;
+            } else if (comp > 0) {
+                comp = 1;
+            } else {
+                comp = 0;
+            }
+        }
+        return comp;
+    }
+
+    public String toStringKey() {
+        return _key + "";
     }
 }
