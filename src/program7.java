@@ -239,7 +239,7 @@ public class program7 {
         double maxAverage = 0;
         double maxHeight = 0;
         double averageLevel = 0.0;
-        double averageHeight = 0.0;
+        double height = 0.0;
         Table temp = null;
         System.out.println("  Size\t\tWorst Case\t\tExpected Case");
         for(int i = 4; i < 16; i++) {
@@ -252,16 +252,14 @@ public class program7 {
                     temp.insert(newNum);
                 }
                 averageLevel += temp.getAverageLevel();
-                if(averageLevel > maxAverage){
-                    maxAverage = averageLevel / 10;
-                }
-                averageHeight += temp.getHeight();
-                if(averageHeight > maxHeight){
-                    maxHeight = averageHeight / 10;
+                height = temp.getHeight();
+                if(height > maxHeight){
+                    maxHeight = height;
                 }
             }
+            averageLevel = averageLevel / 10;
             int size = temp.getSize();
-            System.out.printf("%6d" + "%16.2f" + "%19.2f\n", size, maxHeight, maxAverage);
+            System.out.printf("%6d" + "%16.2f" + "%19.2f\n", size, maxHeight, averageLevel);
         }
     }
 }
@@ -331,11 +329,13 @@ class Table {
             } else {
                 if (myRoot.left == null && myRoot.right == null) {
                     myRoot = null;
+                    System.out.println("Here.");
                 } else if (myRoot.left == null) {
                     myRoot = myRoot.right;
                 } else if (myRoot.right == null) {
                     myRoot = myRoot.left;
                 } else {
+                    System.out.println("Get here.");
                     KeyComparable rep = findMax(myRoot.left);
                     myRoot.data = rep;
                     myRoot.left = delete(myRoot.left, rep);
@@ -443,7 +443,7 @@ class Table {
         if (myRoot != null) {
             result += showTree(myRoot.right, level + 1);
             for (int i = 0; i < level; i++) {
-                result += "\t\t";
+                result += "\t";
             }
             result += myRoot.data.toStringKey();
             result += showTree(myRoot.left, level + 1);
@@ -522,7 +522,7 @@ class MLBPlayerKey implements KeyComparable {
     }
 
     public String toStringKey() {
-        return "#" + _jerseyNumber + ", " + _teamName.substring(0, 3) + "\n";
+        return "" + _jerseyNumber + "" + _teamName.substring(0, 3) + "\n";
     }
 
     public String toString() {
