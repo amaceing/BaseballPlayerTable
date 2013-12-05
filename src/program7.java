@@ -1,5 +1,6 @@
 //Anthony Mace  CSC205AB
-//This program ...
+//This program is designed to implement, create,
+//and manipulate binary trees.
 
 import java.util.*;
 import java.io.*;
@@ -16,17 +17,6 @@ public class program7 {
             int mainMenuChoice = getMainMenuChoice();
             if (mainMenuChoice == 1) {
                 Table tree = new Table();
-                tree.insert(new MLBPlayer(98, "Falcons", "HarveyDent", 0.654));
-                tree.insert(new MLBPlayer(26, "Diamonbacks", "MigeulMontero", 0.294));
-                tree.insert(new MLBPlayer(10, "Diamondbacks", "JustinUpton", 0.167));
-                tree.insert(new MLBPlayer(24, "Diamondbacks", "ChrisYoung", 0.333));
-                tree.insert(new MLBPlayer(22, "Pirates", "AndrewMcCuthcheon", 0.316));
-                tree.insert(new MLBPlayer(3, "Braves", "AnthonyMace", 0.345));
-                tree.insert(new MLBPlayer(14, "Pirates", "PrinceDarko", 0.234));
-                tree.insert(new MLBPlayer(26, "Twins", "EmilyRobinson", 0.345));
-                tree.insert(new MLBPlayer(24, "Yankees", "JackyRobinson", 0.345));
-                tree.insert(new MLBPlayer(32, "Cubs", "GarettWinkler", 0.764));
-                tree.insert(new MLBPlayer(2, "Hawks", "BruceWayne", 0.234));
                 do {
                     int menuChoice = getMenuChoice();
                     if (menuChoice == 1) {
@@ -46,7 +36,6 @@ public class program7 {
             mainCont = continueProg();
         } while(mainCont == 'Y' || mainCont == 'y');
         System.out.println("You have quit the program");
-
     }
 
     public static void printIntro() {
@@ -236,7 +225,6 @@ public class program7 {
 
     public static void testRandomTables() {
         int nextInt = 0;
-        double maxAverage = 0;
         double maxHeight = 0;
         double averageLevel = 0.0;
         double height = 0.0;
@@ -400,11 +388,11 @@ class Table {
         if (_root == null) {
             return 0;
         } else {
-            return (double) getAverageLevel(_root, 1) / getSize();
+            return getAverageLevel(_root, 1) / getSize();
         }
     }
 
-    private int getAverageLevel(Node myRoot, int level) {
+    private double getAverageLevel(Node myRoot, int level) {
         int levels = 0;
         if (myRoot != null) {
             levels += getAverageLevel(myRoot.left, level + 1);
