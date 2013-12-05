@@ -16,18 +16,18 @@ public class program7 {
             int mainMenuChoice = getMainMenuChoice();
             if (mainMenuChoice == 1) {
                 Table tree = new Table();
+                tree.insert(new MLBPlayer(98, "Falcons", "HarveyDent", 0.654));
+                tree.insert(new MLBPlayer(26, "Diamonbacks", "MigeulMontero", 0.294));
+                tree.insert(new MLBPlayer(10, "Diamondbacks", "JustinUpton", 0.167));
+                tree.insert(new MLBPlayer(24, "Diamondbacks", "ChrisYoung", 0.333));
+                tree.insert(new MLBPlayer(22, "Pirates", "AndrewMcCuthcheon", 0.316));
+                tree.insert(new MLBPlayer(3, "Braves", "AnthonyMace", 0.345));
+                tree.insert(new MLBPlayer(14, "Pirates", "PrinceDarko", 0.234));
+                tree.insert(new MLBPlayer(26, "Twins", "EmilyRobinson", 0.345));
+                tree.insert(new MLBPlayer(24, "Yankees", "JackyRobinson", 0.345));
+                tree.insert(new MLBPlayer(32, "Cubs", "GarettWinkler", 0.764));
+                tree.insert(new MLBPlayer(2, "Hawks", "BruceWayne", 0.234));
                 do {
-                    tree.insert(new MLBPlayer(98, "Falcons", "HarveyDent", 0.654));
-                    tree.insert(new MLBPlayer(26, "Diamonbacks", "MigeulMontero", 0.294));
-                    tree.insert(new MLBPlayer(10, "Diamondbacks", "JustinUpton", 0.167));
-                    tree.insert(new MLBPlayer(24, "Diamondbacks", "ChrisYoung", 0.333));
-                    tree.insert(new MLBPlayer(22, "Pirates", "AndrewMcCuthcheon", 0.316));
-                    tree.insert(new MLBPlayer(3, "Braves", "AnthonyMace", 0.345));
-                    tree.insert(new MLBPlayer(14, "Pirates", "PrinceDarko", 0.234));
-                    tree.insert(new MLBPlayer(26, "Twins", "EmilyRobinson", 0.345));
-                    tree.insert(new MLBPlayer(24, "Yankees", "JackyRobinson", 0.345));
-                    tree.insert(new MLBPlayer(32, "Cubs", "GarettWinkler", 0.764));
-                    tree.insert(new MLBPlayer(2, "Hawks", "BruceWayne", 0.234));
                     int menuChoice = getMenuChoice();
                     if (menuChoice == 1) {
                         System.out.println("An empty table will replace the current");
@@ -329,13 +329,11 @@ class Table {
             } else {
                 if (myRoot.left == null && myRoot.right == null) {
                     myRoot = null;
-                    System.out.println("Here.");
                 } else if (myRoot.left == null) {
                     myRoot = myRoot.right;
                 } else if (myRoot.right == null) {
                     myRoot = myRoot.left;
                 } else {
-                    System.out.println("Get here.");
                     KeyComparable rep = findMax(myRoot.left);
                     myRoot.data = rep;
                     myRoot.left = delete(myRoot.left, rep);
@@ -500,7 +498,7 @@ class MLBPlayerKey implements KeyComparable {
         int teamNameResult;
         int jerseyDifference;
         int equality = 2;
-        if (other instanceof MLBPlayer) {
+        if (other instanceof MLBPlayerKey) {
             MLBPlayerKey otherPlayer = (MLBPlayer) other;
             teamNameResult = _teamName.compareTo(otherPlayer._teamName);
             if (teamNameResult == 0) {
