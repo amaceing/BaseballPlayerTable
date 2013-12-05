@@ -330,9 +330,9 @@ class Table {
                 myRoot.right = delete(myRoot.right, key);
             } else {
                 if (myRoot.left == null && myRoot.right == null) {
-                    myRoot = myRoot.right;
+                    myRoot = null;
                 } else if (myRoot.left == null) {
-                    myRoot = myRoot.left;
+                    myRoot = myRoot.right;
                 } else if (myRoot.right == null) {
                     myRoot = myRoot.left;
                 } else {
