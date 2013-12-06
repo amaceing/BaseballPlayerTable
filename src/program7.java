@@ -407,15 +407,15 @@ class Table {
     }
 
     public String toString() {
-        return preOrderPrint(_root);
+        return inOrderPrint(_root);
     }
 
-    private String preOrderPrint(Node myRoot) {
+    private String inOrderPrint(Node myRoot) {
         String result = "";
         if (myRoot != null) {
-            result += preOrderPrint(myRoot.left);
+            result += inOrderPrint(myRoot.left);
             result += myRoot.data + "\n";
-            result += preOrderPrint(myRoot.right);
+            result += inOrderPrint(myRoot.right);
         }
         return result;
     }
