@@ -322,9 +322,9 @@ class Table {
                 } else if (myRoot.right == null) {
                     myRoot = myRoot.left;
                 } else {
-                    KeyComparable rep = findMax(myRoot.left);
-                    myRoot.data = rep;
-                    myRoot.left = delete(myRoot.left, rep);
+                    KeyComparable replacement = findMax(myRoot.left);
+                    myRoot.data = replacement;
+                    myRoot.left = delete(myRoot.left, replacement);
                 }
             }
         }
@@ -544,7 +544,11 @@ class KeyComparableNumber implements KeyComparable {
         return comp;
     }
 
-    public String toStringKey() {
+    public String toString() {
         return _key + "";
+    }
+
+    public String toStringKey() {
+        return toString();
     }
 }
